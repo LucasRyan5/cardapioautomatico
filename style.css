@@ -1,0 +1,532 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --accent-color: #d4af37; /* Tom dourado elegante */
+    --accent-hover: #f3c653;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(218, 45, 114, 0.55), transparent 42%),
+        radial-gradient(ellipse at 85% 80%, rgba(255, 142, 53, 0.5), transparent 42%),
+        linear-gradient(135deg, #32104f, #711c68 52%, #9a3c4c);
+    background-attachment: fixed;
+    color: var(--text-main);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.menu-container {
+    width: 100%;
+    max-width: 750px;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #2a2a2a;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+.menu-highlight {
+    position: relative;
+    height: 230px;
+    margin: 0 0 30px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #2a2a2a;
+    isolation: isolate;
+}
+
+.menu-highlight img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-image.slide-change {
+    animation: carousel-photo-in 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.carousel-caption.slide-change {
+    animation: carousel-caption-in 650ms ease both;
+}
+
+@keyframes carousel-photo-in {
+    from {
+        opacity: 0.55;
+        transform: scale(1.035);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes carousel-caption-in {
+    from {
+        opacity: 0.35;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-highlight figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 36px 18px 16px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.78));
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.carousel-control {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.58);
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 180ms ease;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.carousel-previous {
+    left: 12px;
+}
+
+.carousel-next {
+    right: 12px;
+}
+
+.carousel-indicators {
+    display: flex;
+    flex-shrink: 0;
+    gap: 7px;
+}
+
+.carousel-indicator {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.carousel-indicator.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Filtros */
+.menu-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+/* Itens do Cardápio */
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2a2a2a;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cascade-in {
+    animation: cascade-in 450ms ease both;
+    animation-delay: calc(var(--cascade-index, 0) * 100ms);
+}
+
+@keyframes cascade-in {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item.hide {
+    display: none;
+}
+
+.item-info {
+    padding-right: 20px;
+    min-width: 0;
+}
+
+.item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.item-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.item-price {
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid #2a2a2a;
+    padding-top: 20px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.chatbot {
+    position: fixed;
+    z-index: 10;
+    right: 24px;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.chatbot-panel {
+    display: flex;
+    flex-direction: column;
+    width: min(360px, calc(100vw - 32px));
+    height: min(440px, calc(100vh - 120px));
+    min-height: 280px;
+    overflow: hidden;
+    border: 1px solid #3a3a3a;
+    border-radius: 14px;
+    background: var(--card-bg);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+.chatbot-panel[hidden] {
+    display: none;
+}
+
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #29231a;
+    color: var(--text-main);
+}
+
+.chatbot-header div {
+    display: flex;
+    flex-direction: column;
+}
+
+.chatbot-header strong {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+}
+
+.chatbot-header span {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.chatbot-close {
+    border: 0;
+    background: transparent;
+    color: var(--text-main);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    padding: 14px;
+}
+
+.chat-message {
+    max-width: 88%;
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: #303030;
+    color: var(--text-main);
+    border-bottom-left-radius: 4px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: var(--accent-color);
+    color: #17130a;
+    border-bottom-right-radius: 4px;
+}
+
+.chatbot-form {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid #333;
+}
+
+.chatbot-form input {
+    min-width: 0;
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #444;
+    border-radius: 20px;
+    outline: none;
+    background: #151515;
+    color: var(--text-main);
+    font: inherit;
+    font-size: 0.8rem;
+}
+
+.chatbot-form input:focus {
+    border-color: var(--accent-color);
+}
+
+.chatbot-form button,
+.chatbot-toggle {
+    border: 0;
+    background: var(--accent-color);
+    color: #17130a;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chatbot-form button {
+    padding: 0 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.chatbot-toggle {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    font-size: 1.5rem;
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.chatbot-toggle:hover {
+    transform: translateY(-2px);
+    background: var(--accent-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cascade-in {
+        animation: none;
+    }
+
+    .menu-highlight img,
+    .carousel-control {
+        transition: none;
+    }
+
+    .carousel-image.slide-change,
+    .carousel-caption.slide-change {
+        animation: none;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 24px 14px;
+    }
+
+    .menu-container {
+        padding: 30px 24px;
+    }
+
+    .chatbot {
+        right: 14px;
+        bottom: 14px;
+    }
+
+    .menu-highlight {
+        height: 190px;
+    }
+
+    .menu-highlight figcaption {
+        font-size: 1rem;
+        padding: 32px 14px 14px;
+    }
+
+    header h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+
+    .menu-item {
+        gap: 12px;
+    }
+
+    .item-info {
+        padding-right: 0;
+        min-width: 0;
+    }
+
+    .item-name {
+        font-size: 1.1rem;
+    }
+
+    .item-price {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 14px 10px;
+    }
+
+    .menu-container {
+        padding: 24px 16px;
+    }
+
+    .menu-highlight {
+        height: 160px;
+    }
+
+    .menu-filters {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        flex: 1 1 calc(50% - 8px);
+        padding: 9px 8px;
+    }
+
+    .menu-list {
+        gap: 20px;
+    }
+
+    .item-desc {
+        font-size: 0.8rem;
+    }
+
+    .item-price {
+        font-size: 0.9rem;
+    }
+}

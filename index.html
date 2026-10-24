@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor & Arte | Cardápio Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="menu-container">
+        <header>
+            <h1>Sabor & Arte</h1>
+            <p>Gastronomia contemporânea com ingredientes frescos</p>
+        </header>
+
+        <figure class="menu-highlight" aria-roledescription="carrossel" aria-label="Fotos de pratos">
+            <img
+                class="carousel-image"
+                src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1400&q=85"
+                alt="Prato de massa preparado com ingredientes frescos"
+            >
+            <button class="carousel-control carousel-previous" type="button" aria-label="Foto anterior">
+                &#8249;
+            </button>
+            <button class="carousel-control carousel-next" type="button" aria-label="Próxima foto">
+                &#8250;
+            </button>
+            <figcaption>
+                <span class="carousel-caption">Sabores especiais, feitos com ingredientes frescos</span>
+                <div class="carousel-indicators" aria-label="Escolher foto">
+                    <button class="carousel-indicator active" type="button" aria-label="Mostrar foto 1" aria-current="true"></button>
+                    <button class="carousel-indicator" type="button" aria-label="Mostrar foto 2"></button>
+                    <button class="carousel-indicator" type="button" aria-label="Mostrar foto 3"></button>
+                </div>
+            </figcaption>
+        </figure>
+
+        <!-- Botões de Filtro -->
+        <div class="menu-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="entradas">Entradas</button>
+            <button class="filter-btn" data-filter="principais">Pratos Principais</button>
+            <button class="filter-btn" data-filter="sobremesas">Sobremesas</button>
+        </div>
+
+        <!-- Lista de Pratos -->
+        <div class="menu-list">
+            <!-- Entradas -->
+            <div class="menu-item" data-category="entradas">
+                <div class="item-info">
+                    <span class="item-name">Bruschetta Tradicional</span>
+                    <p class="item-desc">Pão rústico tostado, tomates frescos marinados no azeite, alho e manjericão.</p>
+                </div>
+                <div class="item-price">R$ 28,00</div>
+            </div>
+
+            <div class="menu-item" data-category="entradas">
+                <div class="item-info">
+                    <span class="item-name">Carpaccio de Filé</span>
+                    <p class="item-desc">Finas fatias de carne com molho de mostarda, alcaparras, rúcula e parmesão ralado.</p>
+                </div>
+                <div class="item-price">R$ 42,00</div>
+            </div>
+
+            <!-- Pratos Principais -->
+            <div class="menu-item" data-category="principais">
+                <div class="item-info">
+                    <span class="item-name">Risoto de Camarão</span>
+                    <p class="item-desc">Arroz arbóreo cremoso com camarões grelhados, vinho branco e raspas de limão siciliano.</p>
+                </div>
+                <div class="item-price">R$ 78,00</div>
+            </div>
+
+            <div class="menu-item" data-category="principais">
+                <div class="item-info">
+                    <span class="item-name">Filé ao Molho Madeira</span>
+                    <p class="item-desc">Medalhão de filé mignon grelhado, acompanhado de purê de batata trufado e cogumelos Paris.</p>
+                </div>
+                <div class="item-price">R$ 84,00</div>
+            </div>
+
+            <!-- Sobremesas -->
+            <div class="menu-item" data-category="sobremesas">
+                <div class="item-info">
+                    <span class="item-name">Petit Gâteau</span>
+                    <p class="item-desc">Bolo de chocolate quentinho com interior cremoso, servido com sorvete de baunilha.</p>
+                </div>
+                <div class="item-price">R$ 26,00</div>
+            </div>
+
+            <div class="menu-item" data-category="sobremesas">
+                <div class="item-info">
+                    <span class="item-name">Cheesecake de Frutas Vermelhas</span>
+                    <p class="item-desc">Fatia de torta cremosa com cobertura artesanal de calda de amoras e framboesas.</p>
+                </div>
+                <div class="item-price">R$ 24,00</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Sabor & Arte. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <section class="chatbot" aria-label="Assistente virtual do cardápio">
+        <div class="chatbot-panel" id="chatbot-panel" hidden>
+            <div class="chatbot-header">
+                <div>
+                    <strong>Assistente Sabor &amp; Arte</strong>
+                    <span>Ajudo você a escolher</span>
+                </div>
+                <button class="chatbot-close" type="button" aria-label="Fechar conversa">&times;</button>
+            </div>
+            <div class="chatbot-messages" aria-live="polite" aria-relevant="additions">
+                <p class="chat-message bot-message">Olá, seja bem-vindo(a) ao Sabor &amp; Arte! Sou o assistente virtual do nosso cardápio. Posso apresentar os pratos e preços, montar seu pedido e ajudar você a finalizar pelo WhatsApp. Para começar, pergunte sobre uma categoria ou diga, por exemplo: “quero 2 bruschettas”.</p>
+            </div>
+            <form class="chatbot-form">
+                <label class="visually-hidden" for="chatbot-input">Escreva sua mensagem ou pedido</label>
+                <input id="chatbot-input" name="message" type="text" placeholder="Ex.: quero 2 bruschettas" autocomplete="off" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <button class="chatbot-toggle" type="button" aria-controls="chatbot-panel" aria-expanded="false">
+            <span aria-hidden="true">&#128172;</span>
+            <span class="visually-hidden">Abrir assistente virtual</span>
+        </button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
