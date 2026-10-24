@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const cookieConsent = document.querySelector('.cookie-consent');
+    const cookieConsentStorageKey = 'sabor-arte-cookie-consent';
+
+    try {
+        const savedConsent = window.localStorage.getItem(cookieConsentStorageKey);
+        if (savedConsent !== 'accepted' && savedConsent !== 'rejected') {
+            cookieConsent.showModal();
+        }
+    } catch (error) {
+        console.error('Não foi possível ler a preferência de cookies salva.', error);
+        cookieConsent.showModal();
+    }
+
+    cookieConsent.addEventListener('close', () => {
+        const choice = cookieConsent.returnValue;
+        if (choice !== 'accepted' && choice !== 'rejected') return;
+
+        try {
+            window.localStorage.setItem(cookieConsentStorageKey, choice);
+        } catch (error) {
+            console.error('Não foi possível salvar a preferência de cookies.', error);
+        }
+    });
+
     const filterButtons = document.querySelectorAll('.filter-btn');
     const menuItems = document.querySelectorAll('.menu-item');
     const carousel = document.querySelector('.menu-highlight');
